@@ -1,0 +1,91 @@
+Deg
+ClrText
+"SIDE A"?→A
+"SIDE B"?→B
+"SIDE C"?→C
+"ANGLE ALPHA"?→D
+"ANGLE BETA"?→E
+"ANGLE GAMMA"?→F
+{A,B,C,D,E,F}→List 1
+Lbl 1
+0→N
+For 1→I To 3
+I+1→J:J>3⇒1→J
+J+1→K:K>3⇒1→K
+List 1[I]→P:List 1[J]→Q:List 1[K]→R
+List 1[I+3]→U:List 1[J+3]→V:List 1[K+3]→W
+P+U→T
+If U=0 And VW>0
+Then 180-V-W→U
+U≤0⇒Goto 9
+IfEnd
+If U=0 And PQR>0
+Then (Q²+R²-P²)÷(2QR)→X
+Abs X≥1⇒Goto 9
+cos⁻¹ X→U
+IfEnd
+If P=0 And QRU>0
+Then √(Q²+R²-2QRcos U)→P
+IfEnd
+If QV=0
+Then R→Q:W→V
+IfEnd
+If P=0 And UQV>0
+Then Qsin U÷sin V→P
+IfEnd
+If U=0 And PQV>0
+Then Psin V÷Q→X
+X>1⇒Goto 9
+sin⁻¹ X→U
+If P>Q And X<1 And V<90
+Then "OBTUSE ANGLE? 1=YES"?→Z
+Z=1⇒180-U→U
+IfEnd
+IfEnd
+P+U≠T⇒1→N
+P→List 1[I]:U→List 1[I+3]
+Next
+Min(List 1)>0⇒Goto 2
+N=1⇒Goto 1
+"NOT ENOUGH DATA"
+Stop
+Lbl 9
+"NO SUCH TRIANGLE"
+Stop
+Lbl 2
+List 1[2]cos List 1[4]→X
+List 1[2]sin List 1[4]→Y
+List 1[3]→C
+0→L:X<0⇒X→L
+C→R:X>C⇒X→R
+60÷(R-L)→M
+48÷Y<M⇒48÷Y→M
+8-ML→D
+8+M(C-L)→E
+8+M(X-L)→F
+8+MY→G
+AxesOff
+LabelOff
+ViewWindow 1,127,0,1,63,0
+Cls
+F-Line D,8,E,8
+F-Line E,8,F,G
+F-Line F,G,D,8
+Text 58,Int D-4,"AL"
+Text 58,Int E-4,"BE"
+Text Int (58-G),Int F-4,"GA"
+Text 58,Int ((D+E)÷2)-2,"C"
+Text Int (57-G÷2),Int ((E+F)÷2)+3,"A"
+Text Int (57-G÷2),Int ((D+F)÷2)-6,"B"
+For 1→I To 6
+Text 8I-7,90,Int (100List 1[I]+.5)÷100
+Next
+List 1[1]×List 1[2]×sin List 1[6]÷2→S
+Text 49,90,Int (100S+.5)÷100
+Text 1,76,"A="
+Text 9,76,"B="
+Text 17,76,"C="
+Text 25,76,"AL="
+Text 33,76,"BE="
+Text 41,76,"GA="
+Text 49,76,"S="
