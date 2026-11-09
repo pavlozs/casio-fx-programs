@@ -82,10 +82,10 @@ Text 8I-7,90,Int (100List 1[I]+.5)÷100
 Next
 List 1[1]×List 1[2]×sin List 1[6]÷2→S
 Text 49,90,Int (100S+.5)÷100
-Text 1,76,"A="
-Text 9,76,"B="
-Text 17,76,"C="
+Text 1,80,"A="
+Text 9,80,"B="
+Text 17,80,"C="
 Text 25,76,"AL="
 Text 33,76,"BE="
 Text 41,76,"GA="
-Text 49,76,"S="
+Text 49,80,"S="
